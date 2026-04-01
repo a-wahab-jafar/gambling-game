@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lucky Number - Gambling Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Home Section -->
+    <section id="homeSection" class="section">
+      <div class="container">
+        <div class="card home-card">
+          <h1 class="game-title">🎰 Lucky Number</h1>
+          <p class="game-description">
+            Test your fortune! Guess a number between 1 and 10 and win big!
+          </p>
+          <p class="game-description subtitle">
+            Choose your guess wisely and watch your balance grow.
+          </p>
+          <button class="btn btn-primary btn-lg" onclick="startGame()">
+            Start Game
+          </button>
+        </div>
+
+        <!-- Lucky Number Card - Group 1 -->
+        <div class="card lucky-number-card">
+          <h2>🍀 Group 1 - Lucky Numbers</h2>
+          <div class="lucky-numbers-grid">
+            <div class="lucky-entry">
+              <span class="entry-name">Taremwa (honest)</span>
+              <span class="entry-number">261200</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">Merrick (christian)</span>
+              <span class="entry-number">31449</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">opio (joshua)</span>
+              <span class="entry-number">190519</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">OPOLOT (EMMANUEL)</span>
+              <span class="entry-number">230144</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">MABIIKE (VICENT)</span>
+              <span class="entry-number">230-8493</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">Sentongo (Adrian)</span>
+              <span class="entry-number">229-430</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">Mugisa (Cornerstone)</span>
+              <span class="entry-number">236-634</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">Tayebwa (Jacob)</span>
+              <span class="entry-number">216220</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">Ayiko (Alvin)</span>
+              <span class="entry-number">228009</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">AMAL (LAWRENCE)</span>
+              <span class="entry-number">228314</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">ABITEGEKA (JOHN)</span>
+              <span class="entry-number">230280</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">Matata (Gloire)</span>
+              <span class="entry-number">263-423</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">Muganga (john jovin)</span>
+              <span class="entry-number">242451</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">MULWAHALE (BALINGENE EPHRAIM)</span>
+              <span class="entry-number">237096</span>
+            </div>
+            <div class="lucky-entry">
+              <span class="entry-name">Abdalwahab (Jafar)</span>
+              <span class="entry-number">209-581</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registrationSection" class="section hidden">
+      <div class="container">
+        <div class="card">
+          <h2>Player Registration</h2>
+          <form id="registrationForm" onsubmit="proceedToPlay(event)">
+            <div class="form-group">
+              <label for="playerName">Player Name *</label>
+              <input
+                type="text"
+                id="playerName"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="startingBalance">Starting Balance (Optional)</label>
+              <input
+                type="number"
+                id="startingBalance"
+                placeholder="Default: 1000"
+                min="100"
+                value="1000"
+              />
+            </div>
+            <div class="button-group">
+              <button type="submit" class="btn btn-primary">
+                Proceed to Play
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="resetGame()"
+              >
+                Back
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Game Section -->
+    <section id="gameSection" class="section hidden">
+      <div class="container">
+        <div class="game-container">
+          <!-- Current Balance Display -->
+          <div class="balance-display">
+            <div class="balance-item">
+              <span class="label">Player:</span>
+              <span id="currentPlayerName" class="value">-</span>
+            </div>
+            <div class="balance-item">
+              <span class="label">Balance:</span>
+              <span id="currentBalance" class="value">$1000</span>
+            </div>
+          </div>
+
+          <!-- Bet Form -->
+          <div class="card">
+            <h2>Place Your Bet</h2>
+            <form id="bettingForm" onsubmit="playNow(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="betAmount">Bet Amount *</label>
+                  <input
+                    type="number"
+                    id="betAmount"
+                    placeholder="Enter bet amount"
+                    min="1"
+                    step="1"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="guessNumber">Guess Number (1-10) *</label>
+                  <input
+                    type="number"
+                    id="guessNumber"
+                    placeholder="1-10"
+                    min="1"
+                    max="10"
+                    step="1"
+                    required
+                  />
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg">
+                Play Now
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="resultsSection" class="section hidden">
+      <div class="container">
+        <div class="card">
+          <h2>Round Results</h2>
+          <div id="resultsContainer" class="results-container">
+            <!-- Results will be populated by JavaScript -->
+          </div>
+          <div class="button-group">
+            <button class="btn btn-primary" onclick="showDashboard()">
+              View Dashboard
+            </button>
+            <button class="btn btn-secondary" onclick="playAgain()">
+              Play Again
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboardSection" class="section hidden">
+      <div class="container">
+        <div class="dashboard-container">
+          <h2>Game Dashboard</h2>
+
+          <!-- Stats Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">Current Balance</div>
+              <div class="stat-value" id="dashboardBalance">$1000</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Total Wins</div>
+              <div class="stat-value win" id="dashboardWins">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Total Losses</div>
+              <div class="stat-value lose" id="dashboardLosses">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Win Rate</div>
+              <div class="stat-value" id="dashboardWinRate">0%</div>
+            </div>
+          </div>
+
+          <!-- Round History -->
+          <div class="history-section">
+            <h3>Round History</h3>
+            <div class="table-wrapper">
+              <table id="historyTable" class="history-table">
+                <thead>
+                  <tr>
+                    <th>Round</th>
+                    <th>Your Guess</th>
+                    <th>Number</th>
+                    <th>Bet</th>
+                    <th>Result</th>
+                    <th>Balance After</th>
+                  </tr>
+                </thead>
+                <tbody id="historyTableBody">
+                  <!-- History rows will be populated by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+            <p id="emptyHistoryMessage" class="empty-message">
+              No rounds played yet. Start playing to see your history!
+            </p>
+          </div>
+
+          <!-- Control Buttons -->
+          <div class="button-group">
+            <button class="btn btn-primary" onclick="playAgain()">
+              Play Again
+            </button>
+            <button class="btn btn-danger" onclick="confirmReset()">
+              Reset Game
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
